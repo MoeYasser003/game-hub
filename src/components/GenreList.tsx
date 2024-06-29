@@ -6,6 +6,7 @@ import {
   Text,
   Spinner,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
@@ -24,6 +25,9 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   return (
     <>
       <List>
+        <Heading fontSize="2xl" marginBottom={3}>
+          Genres
+        </Heading>
         {isLoading &&
           skeletons.map((skeleton) => (
             <ListItem key={skeleton} paddingY="5px">
@@ -35,10 +39,13 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
             <HStack>
               <Image
                 boxSize="32px"
+                objectFit="cover"
                 borderRadius={8}
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
+                whiteSpace="normal"
+                textAlign="left"
                 variant="link"
                 onClick={() => onSelectGenre(genre)}
                 fontSize="lg"
